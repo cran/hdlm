@@ -1,0 +1,29 @@
+import("glmnet", "foreach", "MASS")
+
+export(anova.hdlm, deviance.hdlm, df.residual.hdlm,
+formula.hdlm, hdlm, hdlm.fit, HDprintCoefmat,
+labels.hdlm, model.frame.hdlm, model.matrix.hdlm, plot.hdlm,
+predict.hdlm, print.hdlm, print.summary.hdlm, print.summary.hdglm,
+qr.hdlm, residuals.hdlm, summary.hdlm, summary.hdglm,
+hdglm)
+
+S3method("anova", "hdlm")
+S3method("deviance", "hdlm")
+S3method("df.residual", "hdlm")
+S3method("formula", "hdlm")
+S3method("labels", "hdlm")
+S3method("model.frame", "hdlm")
+S3method("model.matrix", "hdlm")
+S3method("plot", "hdlm")
+S3method("predict", "hdlm")
+S3method("predict", "hdglm")
+S3method("print", "hdlm")
+S3method("print", "summary.hdlm")
+S3method("print", "summary.hdglm")
+S3method("residuals", "hdlm")
+S3method("summary", "hdlm")
+S3method("summary", "hdglm")
+
+
+useDynLib(hdlm)
+

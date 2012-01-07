@@ -1,0 +1,1 @@
+PKG_LIBS="-mmacosx-version-min=10.4"
