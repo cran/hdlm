@@ -1,4 +1,4 @@
-import("glmnet", "foreach", "MASS")
+import("glmnet", "foreach", "MASS", "iterators")
 
 export(anova.hdlm, deviance.hdlm, df.residual.hdlm,
 formula.hdlm, hdlm, hdlm.fit, HDprintCoefmat,

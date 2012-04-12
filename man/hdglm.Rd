@@ -19,10 +19,10 @@ Fitting High Dimensional Generalized Linear Models
   underlyingmethods see the Details section below as well.
 }
 \usage{
-hdglm(formula, family =c("gaussian","binomial","poisson"),
+hdglm(formula, data, subset, family =c("gaussian","binomial","poisson"),
     bootstrap = 10, siglevel = 0.05,
     alpha = 0.5, M = NULL, N = NULL, model = TRUE, x = FALSE,
-    y = FALSE, scale=TRUE, pval.method=c('mean', 'fdr', 'holm', 'QA'),
+    y = FALSE, scale=TRUE, pval.method=c('median', 'fdr', 'holm', 'QA'),
     ..., FUNCVFIT = NULL, FUNLM = NULL, bayes=FALSE, bayesIters=NULL,
     bayesTune=NULL, refit=FALSE) 
 }
@@ -32,6 +32,15 @@ hdglm(formula, family =c("gaussian","binomial","poisson"),
     can be coerced to that class): a symbolic description of the
     model to be fitted.  The details of model specification are given
     under \sQuote{Details}.}
+
+  \item{data}{an optional data frame, list or environment (or object
+    coercible by \code{\link{as.data.frame}} to a data frame) containing
+    the variables in the model.  If not found in \code{data}, the
+    variables are taken from \code{environment(formula)},
+    typically the environment from which \code{lm} is called.}
+
+  \item{subset}{an optional vector specifying a subset of observations
+    to be used in the fitting process.}
 
   \item{family}{Which linking function should be used. Current options
    are avaliable for gaussian, binomial and poisson data.}
@@ -75,7 +84,7 @@ hdglm(formula, family =c("gaussian","binomial","poisson"),
   }
 
   \item{pval.method}{
-    one of 'mean', 'fdr', 'holm', or 'QA'. Signifies the method used to 
+    one of 'median', 'fdr', 'holm', or 'QA'. Signifies the method used to 
     combine p-values when bootstrap is greater than 1. For details
     and relative strengths of the three methods, see the package
     vignette. 

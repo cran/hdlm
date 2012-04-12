@@ -1,7 +1,7 @@
 hdlm <-
 function(formula, data, subset, bootstrap = 10, siglevel = 0.05,
     alpha = 0.5, M = NULL, N = NULL, model = TRUE, x = FALSE,
-    y = FALSE, scale=TRUE, pval.method=c('mean', 'fdr', 'holm', 'QA'),
+    y = FALSE, scale=TRUE, pval.method=c('median', 'fdr', 'holm', 'QA'),
     ..., FUNCVFIT = NULL, FUNLM = NULL, bayes=FALSE, bayesIters=NULL,
     bayesTune=c(1,1), refit=FALSE) 
 {
@@ -47,7 +47,7 @@ function(formula, data, subset, bootstrap = 10, siglevel = 0.05,
         FUNCVFIT <- NULL
     }
     pval.method <- pval.method[[1]]
-    if(!(pval.method %in% c('mean', 'fdr', 'holm', 'QA'))) {
+    if(!(pval.method %in% c('median', 'fdr', 'holm', 'QA'))) {
         warning('Unrecognized pval.method; setting to "mean"')
         pval.method <- 'mean'
     }
@@ -74,9 +74,10 @@ function(formula, data, subset, bootstrap = 10, siglevel = 0.05,
 
     # Generally, the intercept should not be penalized; therefore the intercept 
     # is taken out of the data matrix 'x' if included; most selectors (including
-    # the default glmnet) include the offset as a natural addition
+    # the default glmnet) include the offset as a natural addition. Although, should
+    # be left in when using Bayesian method:
     intercept <- FALSE
-    if(colnames(x)[[1L]] == "(Intercept)") {
+    if(colnames(x)[[1L]] == "(Intercept)" & !bayes) {
       x <- x[,-1] 
       intercept <- TRUE
     }
@@ -98,7 +99,7 @@ function(formula, data, subset, bootstrap = 10, siglevel = 0.05,
         z <- hdlm.fit(x, y, bootstrap, siglevel, intercept, alpha = 0.5, M = M, N = N,
                    sd.off = 0,scale=scale, pval.method, ..., FUNCVFIT = FUNCVFIT, FUNLM = FUNLM)
     } else {
-        if(!is.numeric(bayesTune) | length(bayesTune) != 0 | min(bayesTune)) {
+        if(!is.numeric(bayesTune) | length(bayesTune) != 2 | min(bayesTune) < 0 | max(bayesTune) > 1) {
           warning('Invalid bayesTune parameter; see help pages for details')
         }
         z <- bayes.hdlm.fit(x, y, siglevel=siglevel, bayesIters=bayesIters, bayesTune=bayesTune)
@@ -106,7 +107,7 @@ function(formula, data, subset, bootstrap = 10, siglevel = 0.05,
     }
 
     # Refit or not:
-    if( refit != FALSE ) {
+    if( refit != FALSE) {
         refit <- as.numeric(refit)
         model <- which(z$p.value < refit)
         x <- x[,model]

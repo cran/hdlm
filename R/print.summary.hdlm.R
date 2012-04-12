@@ -23,10 +23,10 @@ function (x, digits = max(3, getOption("digits") - 3),
 
     z <- x
 
-      if(z$level == 1 & z$pval.method != 'mean') {
+      if(z$level == 1 & z$pval.method != 'median') {
         index <- union(which(names(z$coefficients) == '(Intercept)'),
             intersect(which(z$p.value != 1),which(z$coefficients != 0)))
-      } else if(z$level == 1 & z$pval.method == 'mean') {
+      } else if(z$level == 1 & z$pval.method == 'median') {
         index <- union(which(names(z$coefficients) == '(Intercept)'), which(z$coefficients != 0))
       } else if(z$level == 2) {
         index <- union(union(which(names(z$coefficients) == '(Intercept)'), which(z$coefficients != 0)), which(z$p.value != 1))
@@ -52,9 +52,7 @@ function (x, digits = max(3, getOption("digits") - 3),
 
  
     cat("\nEstimated sigma: ",
-    format(signif(x$sigma.hat, digits)), ", ", sep='')
-    cat("Selected Variables:",
-    sum(x$coefficients != 0) , "of", length(x$coefficients) , "\n")
+    format(signif(x$sigma.hat, digits)), "", sep='')
     if(nzchar(mess <- naprint(x$na.action))) cat("  (",mess, ")\n", sep="")
     if (!is.null(x$fstatistic)) {
         cat("Multiple R-squared:", formatC(x$r.squared, digits=digits))

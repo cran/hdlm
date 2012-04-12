@@ -128,8 +128,9 @@ function(x, y, bootstrap=1, siglevel = 0.05, intercept=TRUE,
     pvals[pvals > 1] <- 1
 
     # Collect pvalues across columns (runs) by use of fdrpval function above
-    if(pval.method == 'mean') {
-      pvalue <- apply(pvals,2,mean)
+    if(pval.method == 'median') {
+      pvalue <- 2 * apply(pvals,2,median)
+      if(sum(pvalue > 1) != 0) pvalue[pvalue > 1] <- 1
     } else if (pval.method == 'fdr') {
       pvalue <- apply(pvals,2,fdrpval)
     } else if (pval.method == 'holm') {

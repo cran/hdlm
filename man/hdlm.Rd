@@ -26,6 +26,8 @@
 \alias{bayes.hdlm.fit}
 \alias{bayesianLatentFit}
 \alias{mod.cv.glmnet}
+\alias{votingRecord}
+\alias{wordDataset}
 \title{
 Fitting High Dimensional Linear Models
 }
@@ -41,7 +43,7 @@ Fitting High Dimensional Linear Models
 \usage{
 hdlm(formula, data, subset, bootstrap = 10, siglevel = 0.05,
     alpha = 0.5, M = NULL, N = NULL, model = TRUE, x = FALSE,
-    y = FALSE, scale=TRUE, pval.method=c('mean', 'fdr', 'holm', 'QA'),
+    y = FALSE, scale=TRUE, pval.method=c('median', 'fdr', 'holm', 'QA'),
     ..., FUNCVFIT = NULL, FUNLM = NULL, bayes=FALSE, bayesIters=NULL,
     bayesTune = c(1,1), refit=FALSE) 
  
@@ -101,7 +103,7 @@ hdlm(formula, data, subset, bootstrap = 10, siglevel = 0.05,
   }
 
   \item{pval.method}{
-    one of 'mean', 'fdr', 'holm', or 'QA'. Signifies the method used to 
+    one of 'median', 'fdr', 'holm', or 'QA'. Signifies the method used to 
     combine p-values when bootstrap is greater than 1. For details
     and relative strengths of the three methods, see the package
     vignette. 

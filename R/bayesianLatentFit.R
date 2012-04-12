@@ -17,16 +17,25 @@ bayesianLatentFit <- function(x,y,prob=0.01,c=100,iter=1000,burnin=NULL, sigleve
         for(j in 1:p) {
             index <- which(GAMMA[i-1,] != 0 | (1:p) == j)
             xgamma <- x[,index]
-                v1 <- exp(-0.5 * ( t(Z[i-1,]) %*% Z[i-1,] - (c)/(1+c) *
-                        t(Z[i-1,]) %*% xgamma %*% solve(t(xgamma) %*% xgamma)  %*% t(xgamma) %*% Z[i-1,])) * prob
+            v1 <- exp(-0.5 * ( t(Z[i-1,]) %*% Z[i-1,] - (c)/(1+c) *
+                   t(Z[i-1,]) %*% xgamma %*% solve(t(xgamma) %*% xgamma)  %*% t(xgamma) %*% Z[i-1,])) * prob
+            #imat <- t(xgamma) %*% xgamma
+            #diag(imat) <- diag(imat) + 1/c
+            #v1 <- exp(-0.5 * ( t(Z[i-1,]) %*% Z[i-1,] - 
+            #            t(Z[i-1,]) %*% xgamma %*% solve(imat)  %*% t(xgamma) %*% Z[i-1,])) * prob
             xgamma <- x[,setdiff(index,j)]
             if(length(xgamma) != 0) {
                 v0 <- exp(-0.5 * ( t(Z[i-1,]) %*% Z[i-1,] - (c)/(1+c) *
                         t(Z[i-1,]) %*% xgamma %*% solve(t(xgamma) %*% xgamma)  %*% t(xgamma) %*% Z[i-1,])) * (1-prob)
+                #imat <- t(xgamma) %*% xgamma
+                #diag(imat) <- diag(imat) + 1/c
+                #v0 <- exp(-0.5 * ( t(Z[i-1,]) %*% Z[i-1,] - 
+                #        t(Z[i-1,]) %*% xgamma %*% solve(imat)  %*% t(xgamma) %*% Z[i-1,])) * (1-prob)
             } else {
                 v0 <- exp(-0.5 * (t(Z[i-1,]) %*% Z[i-1,]) ) * (1-prob)
             }
             GAMMA[i,j] <- as.numeric( runif(1) <= v1 / (v1 + v0))
+            if(is.na(GAMMA[i,j])) GAMMA[i,j] <- 0
         }
 
         # Sample z_i values
@@ -35,11 +44,6 @@ bayesianLatentFit <- function(x,y,prob=0.01,c=100,iter=1000,burnin=NULL, sigleve
             znew <- 0
             while(znew * sign((y[j] == 1) - 0.5) <= 0) {
                 znew <- rnorm(1, mean = mu[j], sd=1)
-            }
-            if(y[j] > 0) {
-
-            } else {
-                
             }
             Z[i,j] <- znew
         }

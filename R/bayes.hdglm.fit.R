@@ -35,6 +35,7 @@ bayes.hdglm.fit <- function(x,y,siglevel=0.05,bayesIters = NULL, bayesTune = 0.0
     #    sig2=1, tau=1, phi=0.5, tauprior=c(1,1), sig2prior=c(1,1))
 
     betaMCMC <- out$beta
+    colnames(betaMCMC) <- colnames(x)
     
     point_estimator <- apply(betaMCMC, 2, mean)
     bound <- apply(betaMCMC, 2, quantile, probs = c(siglevel,1-siglevel), names=FALSE)

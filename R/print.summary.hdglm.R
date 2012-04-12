@@ -23,10 +23,12 @@ function (x, digits = max(3, getOption("digits") - 3),
 
     z <- x
 
-      if(z$level == 1 & z$pval.method != 'mean') {
-        index <- union(which(names(z$coefficients) == '(Intercept)'), which(z$p.value != 1))
-      } else if(z$level == 1 & z$pval.method == 'mean') {
+      if(z$level == 1 & z$pval.method == 'median') {
         index <- union(which(names(z$coefficients) == '(Intercept)'), which(z$coefficients != 0))
+      } else if(z$level == 1 & z$pval.method == 'bayes') {
+        index <- union(which(names(z$coefficients) == '(Intercept)'), which(z$p.value < 0.5))
+      } else if(z$level == 1 & z$pval.method == 'median') {
+        index <- union(which(names(z$coefficients) == '(Intercept)'), which(z$p.value != 1))
       } else if(z$level == 2) {
         index <- union(union(which(names(z$coefficients) == '(Intercept)'), which(z$coefficients != 0)), which(z$p.value != 1))
       } else {

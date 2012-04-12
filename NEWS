@@ -1,0 +1,7 @@
+### hdlm: version 1.0
+2012-April-02: Changed macos flag that was causing CRAN to fail on sparcpc
+2012-April-20: Fixed variable names on output of Bayesian hdglm, with binomial family
+2012-April-20: Fixed issue with missing intercept using Bayesian hdlm
+
+### hdlm: version 1.1
+2012-April-17: Package broken by update to foreach / iterators. Fixed by simple change to description file to load iterators directly.
