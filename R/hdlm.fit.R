@@ -10,7 +10,6 @@ function(x, y, bootstrap=1, siglevel = 0.05, intercept=TRUE,
   pval.method <- pval.method[[1]]
 
   # quietly load 'foreach':
-  suppressMessages(require(foreach))
   if (is.null(getDoParName())) {
     registerDoSEQ() 
   }

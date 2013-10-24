@@ -1,4 +1,4 @@
-508a1bde3e2d95dec1485b7cc6bc4f2d *DESCRIPTION
+6ffe0fc29e69b798586c84ec74f8034f *DESCRIPTION
 8ae510d4a869820148cc147b82b94873 *NAMESPACE
 42fc8750a1cf6c1ac0a541931d562f0c *NEWS
 744c804ec2480e03094263394c2c1e78 *R/HDprintCoefmat.R
@@ -14,9 +14,9 @@ d3e735d8b5bdbb1a538c25f5b22b9cc8 *R/family.hdlm.R
 9e1f8dc6d3ddfd74cbedb823be3637f7 *R/formula.hdlm.R
 381f09e4706127a329b43f599b83c36c *R/hdglm.R
 6d0d5c9bdd00fffd038b0c2fd0da99f3 *R/hdlm.R
-87b6e2f8808256db27fb31719f767db9 *R/hdlm.fit.R
+3070b970730de31927390e5affe2ac9f *R/hdlm.fit.R
 c243e09660c8110c5d21259693dbfcbd *R/labels.hdlm.R
-95130c3e6a143eef6c3a6a1fd70efa97 *R/mod.cv.glmnet.R
+949515c4a51cdea53b7b4c87c96b16b8 *R/mod.cv.glmnet.R
 89c04ca7f38a55c8540db8210c6d1c11 *R/model.frame.hdlm.R
 276bd39b838892ab48adfbbd1981703d *R/model.matrix.hdlm.R
 4b17fc3df150b937492188e60a8a06a3 *R/plot.hdlm.R
@@ -31,10 +31,11 @@ f772c0ed5766b4b1a82aed444a1d3ace *R/simulate.hdlm.R
 46b5b3e15ed4700c93c2c6313400a724 *R/summary.hdglm.R
 6358819bf6ec93ccddb8d1cbbc645e11 *R/summary.hdlm.R
 7890ba97946338406d35e77743ae9ea3 *R/variable.names.hdlm.R
+496e9777d305e2d0463853a21393d09f *README.md
+a36bc0c336bc696ca3f2866a82bfbc85 *build/vignette.rds
 6e89dbd078088fe51bb95ce8b85eba56 *data/votingRecord.rda
 43f03aeffac8376ebb59b9186b7f013d *data/wordDataset.rda
-eb83e94de6fe3a014ac3b234bae04775 *docs/ConfidenceIntervalTheory.pdf
-52c104779ddffa1a9590f4748e28e6fc *docs/alternativeEstimators.R
+23340727b2384c642b72ba0238778b5a *inst/doc/article.R
 45517637433144f6d12ab9a39266c4bb *inst/doc/article.Rnw
 fbea6b57cf45e519f0a53e466de2c44f *inst/doc/article.pdf
 13d04776a71a994e6bfd90a36a2150f4 *man/hdglm.Rd
