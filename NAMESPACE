@@ -1,4 +1,4 @@
-import("glmnet", "foreach", "MASS", "iterators")
+import("glmnet", "foreach", "MASS", "iterators", "Matrix")
 
 export(anova.hdlm, deviance.hdlm, df.residual.hdlm,
 formula.hdlm, hdlm, hdlm.fit, HDprintCoefmat,
@@ -20,10 +20,23 @@ S3method("predict", "hdglm")
 S3method("print", "hdlm")
 S3method("print", "summary.hdlm")
 S3method("print", "summary.hdglm")
+S3method("qr", "hdlm")
 S3method("residuals", "hdlm")
 S3method("summary", "hdlm")
 S3method("summary", "hdglm")
 
+importFrom("grDevices", "as.graphicsAnnot", "dev.flush", "dev.hold",
+           "dev.interactive", "devAskNewPage", "extendrange")
+importFrom("graphics", "abline", "barplot", "box", "mtext",
+           "panel.smooth", "par", "plot", "points", "strheight",
+           "text", "title")
+importFrom("stats", ".getXlevels", "binomial", "coef", "contrasts",
+           "deviance", "df.residual", "dnorm", "fitted", "formula",
+           "gaussian", "glm", "lm", "median", "model.frame",
+           "model.matrix", "model.response", "model.weights",
+           "na.pass", "naprint", "pf", "pnorm", "poisson", "predict",
+           "qnorm", "qqnorm", "quantile", "residuals", "rnorm",
+           "runif", "sd", "symnum", "var", "variable.names")
 
 useDynLib(hdlm)
 

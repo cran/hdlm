@@ -13,7 +13,7 @@ extern "C"
 #include "util_blasso.h"
 
 double	easy_samp(int p,
-			     double* h, 
+			     double* h,
 				double* w,
 				double* C,
 				double* mu,
@@ -114,7 +114,7 @@ double	rej_samp(int p,
 	 cl = fmax2(mi[2*l]*h[l+1], mi[2*l]*hstar[2*l]);
 	 logomega[2*l] = ci[2*l] + cl + log(exp(mi[2*l]*h[l+1] - cl)/mi[2*l] - exp(mi[2*l]*hstar[2*l] - cl)/mi[2*l]);
 
-      maxtmp = fmax(logomega[2*l-1], logomega[2*l]);
+      maxtmp = fmax2(logomega[2*l-1], logomega[2*l]);
 	 if(lomax < maxtmp) lomax = maxtmp;
    }
 
@@ -145,7 +145,7 @@ double	rej_samp(int p,
 	 for(L=0; L<(2*p); L++) if(u <= cumsum[L]/cumsum[2*p-1]) break;
 
 	 if(print) Rprintf("\nsampled %d\n", L);
-	 
+
 	 // Sample from the truncated exponential
 	 // Need to be careful about the left tail
 	 if(L!=0) prop = hstar[L] + log( (exp(mi[L]*(hstar[L+1]-hstar[L])) - 1.0)*unif_rand() + 1.0)/mi[L];
@@ -244,12 +244,12 @@ int		sig2_rej_samp(double	*ans, // sig2 sample
    sd = 1.0/sqrt(fabs((1.0-2.0*a)/(vhat*vhat) - 2.0*b));
 
    // make sure we go out at least 2 sds
-   outer = (outer >= 2) ? outer : 2; 
+   outer = (outer >= 2) ? outer : 2;
 
    ///////////////////////////////////////
    // Set the knots to use for sampling //
    ///////////////////////////////////////
-   
+
    // Find the smallest possible knot location
    for(k=outer; k>=1; k--) if( (vhat - (double)k*sd) > 0.0 ) break;
 
@@ -298,12 +298,12 @@ int		sig2_rej_samp(double	*ans, // sig2 sample
 
 	    // Find the weight for this chunk
 	    if(k==0) logw[k] = -log(mi[0]) + ci[0] + mi[0]*iknots[0] + log(1.0 - exp(-mi[0]*iknots[0]));
-	    else 
+	    else
 	    {
             cl = fmax2(mi[k]*iknots[k], mi[k]*iknots[k-1]);
             logw[k] = ci[k] + cl + log(exp(mi[k]*iknots[k] - cl)/mi[k] - exp(mi[k]*iknots[k-1] - cl)/mi[k]);
 	    }
-	    
+
 	    maxw = (logw[k] > maxw) ? logw[k] : maxw;
 	 }
    }

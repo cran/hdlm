@@ -1,5 +1,5 @@
-6ffe0fc29e69b798586c84ec74f8034f *DESCRIPTION
-8ae510d4a869820148cc147b82b94873 *NAMESPACE
+92f2de70be6d4dd18af093b77c94bf1d *DESCRIPTION
+30abf1cea4cfb619c5829cb9dfbcfeb3 *NAMESPACE
 42fc8750a1cf6c1ac0a541931d562f0c *NEWS
 744c804ec2480e03094263394c2c1e78 *R/HDprintCoefmat.R
 9c6315a44da3e1f37a4f5f6c85821423 *R/anova.hdlm.R
@@ -32,7 +32,7 @@ f772c0ed5766b4b1a82aed444a1d3ace *R/simulate.hdlm.R
 6358819bf6ec93ccddb8d1cbbc645e11 *R/summary.hdlm.R
 7890ba97946338406d35e77743ae9ea3 *R/variable.names.hdlm.R
 496e9777d305e2d0463853a21393d09f *README.md
-a36bc0c336bc696ca3f2866a82bfbc85 *build/vignette.rds
+0025d801099a0c051bdd5497a91ba7d8 *build/vignette.rds
 6e89dbd078088fe51bb95ce8b85eba56 *data/votingRecord.rda
 43f03aeffac8376ebb59b9186b7f013d *data/wordDataset.rda
 23340727b2384c642b72ba0238778b5a *inst/doc/article.R
@@ -43,7 +43,7 @@ fbea6b57cf45e519f0a53e466de2c44f *inst/doc/article.pdf
 daef2e21a7277b878ddc05389c5132b7 *man/summary.hdlm.Rd
 8a3002ea617779d9bacdc1d87c128701 *src/blasso.cpp
 ac7193d5379f67e215dd34e74b9340a6 *src/trunc_norm.cpp
-7bd8fa8df1a98a60cd5e87f4183957f4 *src/util_blasso.cpp
+4ab78d1d8c1de54745aa3ff099ca3994 *src/util_blasso.cpp
 d60e4ca9e2f8732f007edd8633779936 *src/util_blasso.h
 45517637433144f6d12ab9a39266c4bb *vignettes/article.Rnw
 25f36aec95f2c4f482a9ed61a6a89022 *vignettes/figures/hdlmPlot.pdf
